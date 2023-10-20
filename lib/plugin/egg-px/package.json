@@ -2,8 +2,8 @@
   "name": "egg-px",
   "eggPlugin": {
     "name": "px",
-    "dependencies": ["registry"],
-    "optionalDependencies": ["vip"],
+    "dependencies": [],
+    "optionalDependencies": [],
     "env": ["local", "prod"]
   }
 }

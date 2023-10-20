@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   cors: {
     enable: true,
@@ -10,6 +12,10 @@ module.exports = {
   mysql: {
     enable: true,
     package: 'egg-mysql'
+  },
+  px: {
+    enable: true,
+    path: path.join(__dirname, '../lib/plugin/egg-px')
   },
   redis: {
     enable: true,
