@@ -4,9 +4,9 @@ module.exports = appInfo => {
   const config = exports = {}
 
   // cors
-  config.cors = {
-    origin: '*'
-  }
+  // config.cors = {
+  //   origin: '*'
+  // }
 
   // crypto
   config.encrypt = {
@@ -29,10 +29,10 @@ module.exports = appInfo => {
   // }
 
   // middleware
-  // config.middleware = [
-  //   'error',
-  //   'miss'
-  // ]
+  config.middleware = [
+    'error',
+    'miss'
+  ]
 
   // mysql
   // config.mysql = {
