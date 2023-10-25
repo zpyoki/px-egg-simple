@@ -30,6 +30,7 @@
   },
   "scripts": {
     "start": "egg-scripts start --port=9999 --daemon --title=egg-server-px-egg-simple",
+    "startd": "egg-scripts start --port=9999 --title=egg-server-px-egg-simple",
     "stop": "egg-scripts stop --title=egg-server-px-egg-simple",
     "dev": "egg-bin dev --port=9999",
     "debug": "egg-bin debug",
