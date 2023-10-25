@@ -5,6 +5,7 @@ module.exports = () => {
     ctx.status = status
     if (ctx.status === 404) {
       ctx.body = {
+        code: -1,
         msg: 'Not Found'
       }
     }
