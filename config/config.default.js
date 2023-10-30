@@ -1,4 +1,5 @@
 const fs = require('fs')
+require('dotenv').config()
 
 module.exports = appInfo => {
   const config = exports = {}
@@ -88,7 +89,8 @@ module.exports = appInfo => {
   const userConfig = {
     project: {
       name: 'PX'
-    }
+    },
+    test: process.env.TEST_KEY
   }
 
   return {
