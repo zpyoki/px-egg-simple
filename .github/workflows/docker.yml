@@ -6,15 +6,16 @@ on:
       - main
       - master
     tags: [ '*.*.*' ]
-  pull_request:
-    branches:
-      - main
-      - master
+  # pull_request:
+  #   branches:
+  #     - main
+  #     - master
   # schedule:
   #   - cron: '0 2 * * *'
 
 env:
   REGISTRY: docker.io
+  PROJECT_NAME: pixiu7
   IMAGE_NAME: px-egg-simple
 
 jobs:
@@ -47,7 +48,9 @@ jobs:
       id: meta
       uses: docker/metadata-action@v5
       with:
-        images: ${{ env.REGISTRY }}/pixiu7/${{ env.IMAGE_NAME }}
+        images: ${{ env.REGISTRY }}/${{ env.PROJECT_NAME }}/${{ env.IMAGE_NAME }}
+        tags: |
+          type=semver,pattern={{version}}
 
     - name: Docker Build And Push
       uses: docker/build-push-action@v5
