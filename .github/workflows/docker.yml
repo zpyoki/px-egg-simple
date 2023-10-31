@@ -31,7 +31,7 @@ jobs:
     steps:
     - name: Get Tag
       id: tagsss
-      run: echo ${{ github.ref }}
+      run: echo 111 ${{ github.ref }} 222
 
     # - name: Checkout Git Source
     #   uses: actions/checkout@v2
