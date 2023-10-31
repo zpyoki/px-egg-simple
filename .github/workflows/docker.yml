@@ -31,36 +31,36 @@ jobs:
     steps:
     - name: Get Tag
       id: tagsss
-      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      run: echo ${{ github.ref }}
 
-    - name: Checkout Git Source
-      uses: actions/checkout@v2
+    # - name: Checkout Git Source
+    #   uses: actions/checkout@v2
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
+    # - name: Use Node.js ${{ matrix.node-version }}
+    #   uses: actions/setup-node@v3
+    #   with:
+    #     node-version: ${{ matrix.node-version }}
 
-    - name: Docker Login
-      if: github.event_name != 'pull_request'
-      uses: docker/login-action@v3
-      with:
-        registry: ${{ env.REGISTRY }}
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    # - name: Docker Login
+    #   if: github.event_name != 'pull_request'
+    #   uses: docker/login-action@v3
+    #   with:
+    #     registry: ${{ env.REGISTRY }}
+    #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+    #     password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Extract Docker Metadata
-      id: meta
-      uses: docker/metadata-action@v5
-      with:
-        images: ${{ env.REGISTRY }}/${{ env.PROJECT_NAME }}/${{ env.IMAGE_NAME }}
-        tags: |
-          type=semver,pattern={{version}}
+    # - name: Extract Docker Metadata
+    #   id: meta
+    #   uses: docker/metadata-action@v5
+    #   with:
+    #     images: ${{ env.REGISTRY }}/${{ env.PROJECT_NAME }}/${{ env.IMAGE_NAME }}
+    #     tags: |
+    #       type=semver,pattern={{version}}
 
-    - name: Docker Build And Push
-      uses: docker/build-push-action@v5
-      with:
-        context: .
-        push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
+    # - name: Docker Build And Push
+    #   uses: docker/build-push-action@v5
+    #   with:
+    #     context: .
+    #     push: true
+    #     tags: ${{ steps.meta.outputs.tags }}
+    #     labels: ${{ steps.meta.outputs.labels }}
