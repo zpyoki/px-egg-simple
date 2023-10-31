@@ -5,12 +5,17 @@ on:
     branches:
       - main
       - master
+    tags: [ '*.*.*' ]
   pull_request:
     branches:
       - main
       - master
   schedule:
     - cron: '0 2 * * *'
+
+env:
+  REGISTRY: pixiu7
+  IMAGE_NAME: px-egg-simple
 
 jobs:
   build:
@@ -38,7 +43,8 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Docker Build
-      run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/px-egg-simple:latest .
+      run: docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.tags }} .
 
     - name: Docker Push
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/px-egg-simple:latest
+      run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.tags }}
+
