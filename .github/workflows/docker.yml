@@ -47,7 +47,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v5
       with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        images: ${{ env.REGISTRY }}/pixiu7/${{ env.IMAGE_NAME }}
 
     - name: Docker Build And Push
       uses: docker/build-push-action@v5
