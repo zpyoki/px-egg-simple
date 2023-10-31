@@ -29,6 +29,10 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
+    - name: Get Tag
+      id: tagsss
+      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
     - name: Checkout Git Source
       uses: actions/checkout@v2
 
@@ -38,6 +42,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Docker Login
+      if: github.event_name != 'pull_request'
       uses: docker/login-action@v3
       with:
         registry: ${{ env.REGISTRY }}
