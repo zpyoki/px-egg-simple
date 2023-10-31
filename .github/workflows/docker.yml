@@ -14,7 +14,7 @@ on:
   #   - cron: '0 2 * * *'
 
 env:
-  REGISTRY: pixiu7
+  REGISTRY: docker.io/pixiu7
   IMAGE_NAME: px-egg-simple
 
 jobs:
