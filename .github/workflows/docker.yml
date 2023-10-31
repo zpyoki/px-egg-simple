@@ -19,8 +19,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [16, 18]
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [16]
+        os: [ubuntu-latest]
 
     steps:
     - name: Checkout Git Source
@@ -35,7 +35,7 @@ jobs:
       uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Docker Build
       run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/px-egg-simple:latest .
